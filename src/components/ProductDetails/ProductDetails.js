@@ -5,6 +5,7 @@ import Product from '../Product/Product';
 
 const ProductDetails = () => {
     const {productKey} = useParams();
+    console.log(ProductDetails);
     // key neoyar jonno kono props nay na akhane
     const product = fakeData.find(pd => pd.key === productKey);
     // console.log(product);

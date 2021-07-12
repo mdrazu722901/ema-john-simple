@@ -1,12 +1,12 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
 
-const CardComponent = (props) => {
-    const card = props.card;
+
+const Cart = (props) => {
+    const cart = props.cart;
     let total = 0;
-    for (let i = 0; i < card.length; i++) {
-        const product = card[i];
-        total = total + product.price;
+    for (let i = 0; i < cart.length; i++) {
+        const product = cart[i];
+        total = total + product.price * product.quantity;
     }
     let shipping = 0;
     if (total > 35) {
@@ -21,14 +21,16 @@ const CardComponent = (props) => {
     return (
         <div>
            <h2>this is card</h2>
-           <h3>items ordered: {card.length}</h3> 
+           <h3>items ordered: {cart.length}</h3> 
            <h4>shipping: {shipping}</h4>
            <p><small>Tex + Vat: {vat}</small></p>
            <h4>total price : {total + shipping +vat}</h4>
            <br />
-           <Link to="/order"> <button class="btn btn-info">Card Review</button></Link>
+          {
+              props.children
+          }
         </div>
     );
 };
 
-export default CardComponent;
+export default Cart;
